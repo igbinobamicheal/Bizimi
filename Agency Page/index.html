@@ -11,6 +11,11 @@
 
 <body data-view="agency">
 
+    <div class="bg-container">
+        <div class="bg-layer bg-agency"></div>
+        <div class="bg-layer bg-freelancer"></div>
+    </div>
+
     <nav class="navbar fade-in">
         <div class="logo">
             <a href="#" class="logo-icon">
@@ -37,44 +42,215 @@
                 take the credit.</p>
 
             <div class="hero-buttons">
-                <button class="btn btn-white">Build your team</button>
-                <button class="btn btn-outline">View capabilities</button>
+                <button id="main-cta-btn" class="btn btn-white">Build your team</button>
+                <button class="btn btn-outline">Learn More</button>
             </div>
         </div>
     </header>
 
     <section class="info-section">
         <div class="container fade-up">
-            <h2>Never say 'no' to a client project again.</h2>
-            <p>Stop turning away work because your internal team is at capacity. Bizimi provides 'plug-and-play' experts
-                who integrate directly into your workflow.</p>
-            <button class="btn btn-dark">See how it works</button>
+            <div class="info-grid">
+                <div class="info-text">
+                    <h2 id="info-title">Never say 'no' to a client project again.</h2>
+                    <p id="info-desc">Stop turning away work because your internal team is at capacity. Bizimi provides 'plug-and-play' experts who integrate directly into your workflow.</p>
+                    <button id="info-btn" class="btn btn-dark">See how it works</button>
+                </div>
+                <div class="info-image">
+                   <img src="imgs/handshake.svg" alt="Bizimi Illustration">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <!-- SVG Gradient Definition -->
+            <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+                <linearGradient id="icon-gradient" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#f58025" />
+                    <stop offset="100%" stop-color="#da4a32" />
+                </linearGradient>
+            </svg>
+
+            <div class="features-header fade-up">
+                <h2>Why choose Bizimi?</h2>
+                <p>We provide everything you need to successfully complete your projects and grow your business.</p>
+            </div>
+
+            <div class="grid-container">
+                <!-- Card 1 -->
+                <div class="feature-card fade-up delay-1">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h3>Find Top Talent</h3>
+                    <p>Connect with skilled freelancers from around the world, vetted for quality and expertise.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="feature-card fade-up delay-2">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                    </div>
+                    <h3>Secure Payments</h3>
+                    <p>Safe and secure payment system with escrow protection for both clients and freelancers.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="feature-card fade-up delay-3">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <h3>Quality Assurance</h3>
+                    <p>All freelancers are verified and rated by previous clients to ensure top-quality work.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="feature-card fade-up delay-1">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                    </div>
+                    <h3>Fast Delivery</h3>
+                    <p>Get your projects completed quickly with our efficient matching and communication system.</p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="feature-card fade-up delay-2">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                    </div>
+                    <h3>Global Reach</h3>
+                    <p>Access talent from around the world, working across different time zones and cultures.</p>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="feature-card fade-up delay-3">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                        </svg>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock customer support to help you with any questions or issues.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works-section">
+        <div class="container">
+            <div class="how-it-works-header fade-up">
+                <h2>How it works</h2>
+                <p>Getting started is simple. Follow these three easy steps to begin your journey.</p>
+            </div>
+
+            <div class="steps-container fade-up delay-1">
+                <!-- Step 1 -->
+                <div class="step-item">
+                    <div class="step-number">
+                        <span class="number-text">1</span>
+                    </div>
+                    <h3>Create Your Account</h3>
+                    <p>Sign up as a freelancer or client in just a few minutes.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step-item">
+                    <div class="step-number">
+                        <span class="number-text">2</span>
+                    </div>
+                    <h3>Post or Browse Projects</h3>
+                    <p>Clients post projects, freelancers browse and submit proposals.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step-item">
+                    <div class="step-number">
+                        <span class="number-text">3</span>
+                    </div>
+                    <h3>Work & Get Paid</h3>
+                    <p>Complete the work, get approved, and receive secure payments.</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <section class="services-section">
-        <div class="container grid-container">
-            <div class="service-card fade-up delay-1">
-                <div class="icon-placeholder">
-                    <img src="imgs/uiux.png" alt="UI/UX Design">
-                </div>
+        <div class="container">
+            <div class="features-header fade-up">
+                <h2>Our Services</h2>
+                <p>Comprehensive solutions tailored to your business needs.</p>
             </div>
-
-            <div class="service-card fade-up delay-2">
-                <div class="icon-placeholder">
-                    <img src="imgs/full stack dev.png" alt="Full Stack Development">
+            
+            <div class="grid-container">
+                <!-- Service 1 -->
+                <div class="service-card fade-up delay-1">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                            <path d="M2 2l7.586 7.586"></path>
+                            <circle cx="11" cy="11" r="2"></circle>
+                        </svg>
+                    </div>
+                    <h3>UI/UX Design</h3>
+                    <p>User-centric designs that blend aesthetics with functionality for superior experiences.</p>
                 </div>
-            </div>
 
-            <div class="service-card fade-up delay-3">
-                <div class="icon-placeholder">
-                    <img src="imgs/graphic design.png" alt="Graphic Design">
+                <!-- Service 2 -->
+                <div class="service-card fade-up delay-2">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Full Stack Dev</h3>
+                    <p>End-to-end web solutions using cutting-edge technologies and robust architectures.</p>
                 </div>
-            </div>
 
-            <div class="service-card fade-up delay-4">
-                <div class="icon-placeholder">
-                    <img src="imgs/many more.png" alt="And many more">
+                <!-- Service 3 -->
+                <div class="service-card fade-up delay-3">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="13.5" cy="6.5" r=".5"></circle>
+                            <circle cx="17.5" cy="10.5" r=".5"></circle>
+                            <circle cx="8.5" cy="7.5" r=".5"></circle>
+                            <circle cx="6.5" cy="12.5" r=".5"></circle>
+                            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
+                        </svg>
+                    </div>
+                    <h3>Graphic Design</h3>
+                    <p>Compelling visual identities and creative assets that tell your brand's story.</p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card fade-up delay-4">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 20h20"></path>
+                            <path d="M5 16l6-8 5 4 4-10"></path>
+                        </svg>
+                    </div>
+                    <h3>Strategy & Growth</h3>
+                    <p>Data-driven insights and consulting to help your business scale effectively.</p>
                 </div>
             </div>
         </div>
@@ -84,8 +260,8 @@
         <div class="container footer-grid">
             <div class="footer-brand">
                 <div class="logo">
-                    <img src="imgs/logo(1).png" alt="Bizimi Logo" style="height: 40px;">
-                    <span class="logo-text">Bizimi</span>
+                    <img src="imgs/logo (1).png" alt="Bizimi Logo" style="height: 56px;">
+
                 </div>
             </div>
 
