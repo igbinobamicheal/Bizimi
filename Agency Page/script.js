@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
       infoDesc:
         "Stop turning away work because your internal team is at capacity. Bizimi provides 'plug-and-play' experts who integrate directly into your workflow.",
       infoBtn: "See how it works",
+      infoImg: "imgs/handshake.svg"
     },
     freelancer: {
       title: "Work on your terms.",
@@ -22,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
       infoDesc:
         "We handle the client acquisition, project management, and billing. You just show up and do what you do best.",
       infoBtn: "Apply to join",
+      infoImg: "imgs/freelancer.svg"
     },
   };
 
@@ -52,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function animateTextChange(key) {
     const heroContent = document.querySelector(".hero-content");
     const infoText = document.querySelector(".info-text"); // wrapper for info section text
+    const infoImage = document.querySelector(".info-image"); // wrapper for info image
 
     // Fade out
     heroContent.style.opacity = "0";
@@ -61,6 +64,12 @@ document.addEventListener("DOMContentLoaded", () => {
       infoText.style.opacity = "0";
       infoText.style.transform = "translateY(10px)";
       infoText.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+    }
+
+    if (infoImage) {
+      infoImage.style.opacity = "0";
+      infoImage.style.transform = "translateY(10px)";
+      infoImage.style.transition = "opacity 0.3s ease, transform 0.3s ease";
     }
 
     heroContent.style.transition = "opacity 0.3s ease, transform 0.3s ease";
@@ -74,10 +83,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const infoTitle = document.getElementById("info-title");
       const infoDesc = document.getElementById("info-desc");
       const infoBtn = document.getElementById("info-btn");
+      const infoImg = document.getElementById("info-img");
 
       if (infoTitle) infoTitle.innerText = content[key].infoTitle;
       if (infoDesc) infoDesc.innerText = content[key].infoDesc;
       if (infoBtn) infoBtn.innerText = content[key].infoBtn;
+      if (infoImg) infoImg.src = content[key].infoImg;
 
       // Update CTA Button Text
       const ctaBtn = document.getElementById("main-cta-btn");
@@ -94,6 +105,11 @@ document.addEventListener("DOMContentLoaded", () => {
       if (infoText) {
         infoText.style.opacity = "1";
         infoText.style.transform = "translateY(0)";
+      }
+      
+      if (infoImage) {
+        infoImage.style.opacity = "1";
+        infoImage.style.transform = "translateY(0)";
       }
     }, 300);
   }
