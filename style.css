@@ -1148,7 +1148,7 @@ body.freelancer-mode .bg-freelancer {
   }
 
   .login-left img {
-    height: 60px !important;
+    height: 120px !important;
   }
 
   .login-left h2 {
@@ -1469,9 +1469,29 @@ body.freelancer-mode .bg-freelancer {
 }
 
 @media (max-width: 900px) {
+  .signup-container {
+      align-items: flex-start; /* Prevent top cropping on long content */
+      padding-top: 40px;
+      padding-bottom: 40px;
+  }
+
   .signup-wrapper {
     grid-template-columns: 1fr;
     height: auto;
+    max-height: none; /* Remove max-height limit */
+    overflow: visible; /* Allow content to flow */
+    border-radius: 24px; /* Keep radius */
+    /* overflow: hidden matches rounded corners, but on mobile long content needs to flow. 
+       If we want rounded corners on the card, we keep overflow: hidden but ensure inner doesn't scroll independently.
+       However, if the card is longer than screen, ensuring the body scrolls is key.
+    */
+    overflow: hidden; 
+  }
+
+  .signup-right {
+      height: auto;
+      overflow-y: visible; /* Disable internal scroll, let page scroll */
+      max-height: none;
   }
 
   .signup-left {
@@ -1490,7 +1510,7 @@ body.freelancer-mode .bg-freelancer {
 }
 
 /* Agency Signup Additions */
-.hidden {
+.hidden, .hidden-form {
   display: none !important;
 }
 

@@ -133,102 +133,95 @@ document.addEventListener("DOMContentLoaded", () => {
   // Select elements to animate
   const animatedElements = document.querySelectorAll(".fade-up, .fade-in");
   animatedElements.forEach((el) => observer.observe(el));
-  // --- 3. Password Toggle Logic ---
-  const togglePassword = document.querySelector(".toggle-password");
-  const passwordInput = document.querySelector("#password");
 
-  if (togglePassword && passwordInput) {
-    togglePassword.addEventListener("click", function () {
-      const type =
-        passwordInput.getAttribute("type") === "password" ? "text" : "password";
-      passwordInput.setAttribute("type", type);
-
-      // Optional: Toggle icon styling if needed (e.g. changing the SVG)
-      // For now, we just toggle visibility property
-      if (type === "text") {
-        togglePassword.style.color = "white";
-      } else {
-        togglePassword.style.color = ""; // Reset to default
-      }
-    });
-  }
   // --- 4. Signup Page Logic (Role & Skills) ---
   const roleCards = document.querySelectorAll(".role-card");
   const roleInput = document.getElementById("selected-role");
 
   if (roleCards.length > 0) {
-    // Elements to toggle
-    const freelancerFields = document.querySelectorAll(".freelancer-only");
-    const agencyFields = document.querySelectorAll(".agency-only");
-    const usernameInput = document.getElementById("username");
-    const companyNameInput = document.getElementById("company-name");
-    const companySizeInput = document.getElementById("company-size");
-    const submitBtn = document.getElementById("submit-btn");
+      const freelancerForm = document.getElementById('freelancer-form');
+      const agencyForm = document.getElementById('agency-form');
 
-    // Initialize transition classes for all fields
-    const allToggleFields = [...freelancerFields, ...agencyFields];
-    allToggleFields.forEach((el) => el.classList.add("fade-transition"));
+      // Initialize transition classes for forms
+      if (freelancerForm) freelancerForm.classList.add('fade-transition');
+      if (agencyForm) agencyForm.classList.add('fade-transition');
 
-    roleCards.forEach((card) => {
-      card.addEventListener("click", () => {
-        // Ignore if already active
-        if (card.classList.contains("active")) return;
+      roleCards.forEach(card => {
+          card.addEventListener('click', () => {
+              // Ignore if already active
+              if (card.classList.contains('active')) return;
 
-        // Remove active class from all
-        roleCards.forEach((c) => c.classList.remove("active"));
-        // Add to clicked
-        card.classList.add("active");
+              // Remove active class from all
+              roleCards.forEach(c => c.classList.remove('active'));
+              // Add to clicked
+              card.classList.add('active');
+              
+              const role = card.getAttribute('data-role');
+              // Update hidden inputs if needed (though now we have separate forms, checking role might be done via which form is submitted)
+              if (roleInput) roleInput.value = role; // Keep this if the hidden input is still used for form submission
 
-        const role = card.getAttribute("data-role");
-        if (roleInput) roleInput.value = role;
+              let showForm, hideForm;
+              if (role === 'agency') {
+                  showForm = agencyForm;
+                  hideForm = freelancerForm;
+              } else {
+                  showForm = freelancerForm;
+                  hideForm = agencyForm;
+              }
 
-        // Define which sets to show/hide
-        let showSet, hideSet;
-        if (role === "agency") {
-          showSet = agencyFields;
-          hideSet = freelancerFields;
+              if (showForm && hideForm) {
+                  // Animate Switch
+                  hideForm.classList.add('fade-out');
 
-          // Update required attributes
-          if (usernameInput) usernameInput.removeAttribute("required");
-          if (companyNameInput)
-            companyNameInput.setAttribute("required", "true");
-          if (companySizeInput)
-            companySizeInput.setAttribute("required", "true");
-
-          if (submitBtn) submitBtn.innerText = "Create Agency Account";
-        } else {
-          showSet = freelancerFields;
-          hideSet = agencyFields;
-
-          // Update required attributes
-          if (usernameInput) usernameInput.setAttribute("required", "true");
-          if (companyNameInput) companyNameInput.removeAttribute("required");
-          if (companySizeInput) companySizeInput.removeAttribute("required");
-
-          if (submitBtn) submitBtn.innerText = "Create Freelancer Account";
-        }
-
-        // Animate Switch
-        // 1. Fade out current
-        hideSet.forEach((el) => el.classList.add("fade-out"));
-
-        setTimeout(() => {
-          // 2. Hide current, Show new (but keep invisible)
-          hideSet.forEach((el) => el.classList.add("hidden"));
-          showSet.forEach((el) => {
-            el.classList.add("fade-out"); // Ensure it starts invisible
-            el.classList.remove("hidden");
+                  setTimeout(() => {
+                      hideForm.style.display = 'none';
+                      hideForm.classList.add('hidden-form'); // Ensure it stays hidden via class if needed
+                      
+                      showForm.classList.remove('hidden-form'); // Remove !important class
+                      showForm.style.display = 'block';
+                      
+                      showForm.classList.add('fade-out'); // Ensure it starts invisible
+                      
+                      requestAnimationFrame(() => {
+                          showForm.classList.remove('fade-out');
+                      });
+                  }, 300);
+              }
           });
-
-          // 3. Trigger reflow / small delay to allow browser to render 'fade-out' state for new elements
-          requestAnimationFrame(() => {
-            // 4. Fade in new
-            showSet.forEach((el) => el.classList.remove("fade-out"));
-          });
-        }, 300); // Wait for fade out
       });
-    });
+
+      // Check URL parameters for pre-selection
+      const urlParams = new URLSearchParams(window.location.search);
+      const preSelectedRole = urlParams.get('role');
+      if (preSelectedRole) {
+          const targetCard = document.querySelector(`.role-card[data-role="${preSelectedRole}"]`);
+          if (targetCard) {
+              targetCard.click();
+          }
+      }
   }
+
+  // --- Password Toggle Logic (Generalized) ---
+  const toggleButtons = document.querySelectorAll('.toggle-password');
+  toggleButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+          // Find the closest parent that contains the input, then query for inputs within it
+          const inputContainer = this.closest('.password-input-wrapper') || this.parentElement;
+          const inputValues = inputContainer ? inputContainer.querySelectorAll('input[type="password"], input[type="text"]') : [];
+          
+          inputValues.forEach(input => {
+             const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+             input.setAttribute('type', type);
+             
+             // Apply color change to the toggle button itself
+             if (type === 'text') {
+                 this.style.color = 'white';
+             } else {
+                 this.style.color = ''; 
+             }
+          });
+      });
+  });
 
   // Skills Logic
   const skillsData = [
