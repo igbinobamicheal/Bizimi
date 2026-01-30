@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const heroSub = document.getElementById("hero-sub");
 
   // Data content for the two views
+  // Data content for the two views
   const content = {
     agency: {
       title: "Expertise, on demand.",
@@ -14,7 +15,10 @@ document.addEventListener("DOMContentLoaded", () => {
       infoDesc:
         "Stop turning away work because your internal team is at capacity. Bizimi provides 'plug-and-play' experts who integrate directly into your workflow.",
       infoBtn: "See how it works",
+      infoLink: "#how-it-works",
       infoImg: "imgs/handshake.svg",
+      ctaBtn: "Build your team",
+      ctaLink: "Signup.html?role=agency"
     },
     freelancer: {
       title: "Work on your terms.",
@@ -23,7 +27,10 @@ document.addEventListener("DOMContentLoaded", () => {
       infoDesc:
         "We handle the client acquisition, project management, and billing. You just show up and do what you do best.",
       infoBtn: "Apply to join",
+      infoLink: "Signup.html",
       infoImg: "imgs/freelancer.svg",
+      ctaBtn: "Find Work",
+      ctaLink: "Signup.html"
     },
   };
 
@@ -87,15 +94,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (infoTitle) infoTitle.innerText = content[key].infoTitle;
       if (infoDesc) infoDesc.innerText = content[key].infoDesc;
-      if (infoBtn) infoBtn.innerText = content[key].infoBtn;
+      if (infoBtn) {
+          infoBtn.innerText = content[key].infoBtn;
+          infoBtn.href = content[key].infoLink;
+      }
       if (infoImg) infoImg.src = content[key].infoImg;
 
       // Update CTA Button Text
       const ctaBtn = document.getElementById("main-cta-btn");
-      if (key === "freelancer") {
-        ctaBtn.innerText = "Find Work";
-      } else {
-        ctaBtn.innerText = "Build your team";
+      if (ctaBtn) {
+          ctaBtn.innerText = content[key].ctaBtn;
+          ctaBtn.href = content[key].ctaLink;
       }
 
       // Fade in
