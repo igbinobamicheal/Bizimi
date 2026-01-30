@@ -801,6 +801,8 @@ img {
     background: radial-gradient(circle at 10% 20%, #002D72 0%, transparent 40%),
                 radial-gradient(circle at 90% 80%, #da4a32 0%, transparent 40%);
     opacity: 1;
+    background-size: 140% 140%;
+    animation: gradient-standby 15s ease-in-out infinite alternate;
 }
 
 /* Freelancer Mode Gradient (Swapped) */
@@ -808,6 +810,19 @@ img {
     background: radial-gradient(circle at 10% 20%, #da4a32 0%, transparent 40%),
                 radial-gradient(circle at 90% 80%, #002D72 0%, transparent 40%);
     opacity: 0;
+    background-size: 140% 140%;
+    animation: gradient-standby 15s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes gradient-standby {
+    0% {
+        background-position: 0% 0%;
+        transform: scale(1);
+    }
+    100% {
+        background-position: 100% 100%;
+        transform: scale(1.05); /* Slight breathe effect */
+    }
 }
 
 /* Toggle Logic */
