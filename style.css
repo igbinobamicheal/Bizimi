@@ -799,6 +799,41 @@ img {
     z-index: 1001;
   }
 
+  /* Responsive Signup/Login */
+  .signup-wrapper,
+  .login-wrapper {
+    flex-direction: column;
+    max-width: 500px; /* Constrain width on mobile when stacked */
+  }
+
+  .signup-left,
+  .signup-right,
+  .login-left,
+  .login-right {
+    width: 100%;
+    flex: none;
+  }
+
+  .signup-left,
+  .login-left {
+    padding: 40px 30px;
+    text-align: center;
+    min-height: auto;
+  }
+
+  /* Adjust branding on mobile */
+  .signup-left h2,
+  .login-left h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+
+  .signup-left p {
+    font-size: 1rem;
+  }
+
+
+
   /* Hamburger Animation */
   .mobile-menu-btn.active .bar:nth-child(1) {
     transform: translateY(9px) rotate(45deg);
@@ -1247,6 +1282,10 @@ body.freelancer-mode .bg-freelancer {
   border-radius: 20px;
 }
 
+.signup-form-content {
+  padding: 50px 50px 0 50px;
+}
+
 .signup-form {
   padding: 50px;
 }
@@ -1507,6 +1546,10 @@ body.freelancer-mode .bg-freelancer {
   .form-grid {
     grid-template-columns: 1fr;
   }
+
+  .signup-form-content {
+    padding: 30px 20px 0 20px;
+  }
 }
 
 /* Agency Signup Additions */
@@ -1556,4 +1599,59 @@ body.freelancer-mode .bg-freelancer {
 .fade-out {
   opacity: 0;
   transform: translateY(10px);
+}
+
+/* Toast Notifications */
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toast {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  color: white;
+  padding: 16px 24px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 300px;
+  transform: translateX(120%);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-weight: 500;
+}
+
+.toast.show {
+  transform: translateX(0);
+}
+
+.toast.success {
+  border-left: 4px solid #10b981;
+}
+
+.toast.error {
+  border-left: 4px solid #ef4444;
+}
+
+.toast-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toast.success .toast-icon {
+  color: #10b981;
+}
+
+.toast.error .toast-icon {
+  color: #ef4444;
 }
