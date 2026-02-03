@@ -30,96 +30,11 @@
 
             <!-- Right Side: Form -->
             <div class="signup-right">
-                <div class="signup-form-content">
-                    <label class="form-label">I want to join as:</label>
-                    <div class="role-selector">
-                        <div class="role-card active" data-role="freelancer">
-                            <!-- Icon can be replaced with SVG/Img -->
-                            <div class="role-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                            </div>
-                            <h3>Freelancer</h3>
-                            <span class="role-sub">+80 credits</span>
-                        </div>
-                        <div class="role-card" data-role="agency">
-                            <div class="role-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-                            </div>
-                            <h3>Agency</h3>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Freelancer Form -->
-                <form id="freelancer-form" class="signup-form" style="padding-top: 0;">
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="fullname-freelancer">Full Name *</label>
-                            <input type="text" id="fullname-freelancer" placeholder="Enter your full name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="username">Username *</label>
-                            <input type="text" id="username" placeholder="Choose a unique username" required>
-                        </div>
-                    </div>
 
-                    <div class="form-group skills-section" id="skills-section-wrapper">
-                        <label>Select Your Skills * (Max 10)</label>
-                        <p class="input-hint">Search and choose your skills, or select Others.</p>
-                        
-                        <!-- Selected Skills Pills Area -->
-                        <div id="selected-skills-list" class="selected-skills-list"></div>
 
-                        <!-- Dropdown Search -->
-                        <div class="skills-dropdown-wrapper">
-                            <input type="text" id="skill-search" placeholder="Search skills..." class="skill-search-input" autocomplete="off">
-                            <ul id="skills-dropdown" class="skills-dropdown"></ul>
-                        </div>
-                        
-                        <!-- "Others" Input Area -->
-                        <div id="other-skill-wrapper" class="other-skill-wrapper" style="display: none;">
-                            <input type="text" id="other-skill-input" placeholder="Type your skill and press Enter">
-                        </div>
 
-                        <p class="skills-counter">Selected: <span id="skill-count">0</span>/10 skills</p>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email-freelancer">Email Address *</label>
-                        <input type="email" id="email-freelancer" placeholder="Enter your email address" required>
-                    </div>
-
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="password-freelancer">Password *</label>
-                            <div class="password-input-wrapper">
-                                <input type="password" id="password-freelancer" placeholder="Create a password (min 6 characters)" required>
-                                <button type="button" class="toggle-password" aria-label="Toggle password visibility">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="confirm-password-freelancer">Confirm Password *</label>
-                            <div class="password-input-wrapper">
-                                <input type="password" id="confirm-password-freelancer" placeholder="Confirm your password" required>
-                                <button type="button" class="toggle-password" aria-label="Toggle password visibility">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary-gradient full-width" style="margin-top: 20px;">Create Freelancer Account</button>
-
-                    <div class="form-footer">
-                        <p>Already have an account? <a href="Login.html">Sign in</a></p>
-                    </div>
-                </form>
-
-                <!-- Agency Form -->
-                <form id="agency-form" class="signup-form hidden-form" style="padding-top: 0; display: none;">
+                <form id="agency-form" class="signup-form">
                     <div class="form-grid">
                         <div class="form-group">
                             <label for="fullname-agency">Full Name *</label>
