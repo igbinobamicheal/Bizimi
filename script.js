@@ -18,11 +18,33 @@ document.addEventListener("DOMContentLoaded", () => {
   }, observerOptions);
 
   // Select elements to animate
-  const animatedElements = document.querySelectorAll(".fade-up, .fade-in");
+  const animatedElements = document.querySelectorAll(".fade-up, .fade-in, .reveal-section");
   animatedElements.forEach((el) => observer.observe(el));
 
+  // --- 2.5 Background Scroll Transition ---
+  const bgLayer = document.querySelector(".bg-layer.bg-agency");
+  const servicesSection = document.querySelector(".services-section");
+  const firstHiringSection = document.querySelector("#hire-graphic-design");
 
+  if (bgLayer && servicesSection) {
+    window.addEventListener("scroll", () => {
+      // Calculate when the services section comes into view
+      const servicesTop = servicesSection.getBoundingClientRect().top;
+      const triggerPoint = window.innerHeight * 0.6; // Trigger when 40% down
+      
+      let hiringTop = window.innerHeight * 2; // Default to far below viewport if missing
+      if (firstHiringSection) {
+        hiringTop = firstHiringSection.getBoundingClientRect().top;
+      }
 
+      // Hide the gradient gradient only when between Services and Hiring Sections
+      if (servicesTop <= triggerPoint && hiringTop > triggerPoint) {
+        document.body.classList.add("dark-mode-active");
+      } else {
+        document.body.classList.remove("dark-mode-active");
+      }
+    });
+  }
   // --- Password Toggle Logic (Generalized) ---
   const toggleButtons = document.querySelectorAll('.toggle-password');
   toggleButtons.forEach(btn => {
